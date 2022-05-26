@@ -5,8 +5,14 @@ import "../css/Container.css";
 const CurrentWeatherForecast = () => {
   const [input, setInput] = useState("");
   const [city, setCity] = useState("saigon");
+  const [error, setError] = useState("none");
 
   const handleSubmit = () => {
+    if (input === "") {
+      setError("0.2vw solid #FF4949");
+    } else {
+      setError("none");
+    }
     setCity(input);
   };
 
@@ -23,6 +29,7 @@ const CurrentWeatherForecast = () => {
                 placeholder="Your city"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                style={{ border: error, transition: "0.25s" }}
               />
             </div>
             <div className="form__input--button">

@@ -28,6 +28,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.7vw;
+  color: #40674b;
 }
 
 .form__input {
@@ -109,6 +110,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.7vw;
+  color: #fff;
 }
 
 .content--data {
@@ -123,7 +125,7 @@
 .weather__data {
   width: 15vw;
   height: 15vw;
-  background-color: #ffffff4e;
+  background-color: #ffffff44;
   border-radius: 15px;
 }
 
@@ -157,3 +159,7 @@
   background-color: #ffffff37;
   border-radius: 8px;
 } */
+
+.deg {
+  content: "\00B0";
+}

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 const CurrentWeatherForecastApi = ({ city }) => {
   const [dataArray, setDataArray] = useState([]);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -12,10 +11,8 @@ const CurrentWeatherForecastApi = ({ city }) => {
         const res = await axios.get(url);
         const data = res.data;
         setDataArray([data]);
-        setError("");
       } catch (err) {
         console.log("err", err);
-        setError("Khong tim thay ten thanh pho");
       }
     };
 
@@ -37,8 +34,14 @@ const CurrentWeatherForecastApi = ({ city }) => {
             <div className="weather__data--content">
               {dataArray.map((city) => (
                 <div key={city.id}>
-                  <div>Lon: {city.coord.lon}</div>
-                  <div>Lat: {city.coord.lat}</div>
+                  <div>
+                    Lon: {city.coord.lon}
+                    <span className="deg">&#176;</span>
+                  </div>
+                  <div>
+                    Lat: {city.coord.lat}
+                    <span className="deg">&#176;</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -65,11 +68,21 @@ const CurrentWeatherForecastApi = ({ city }) => {
             <div className="weather__data--content">
               {dataArray.map((city) => (
                 <div key={city.id}>
-                  <div>temp: {Math.floor(city.main.temp - 273.15)}</div>
-                  <div>temp min: {Math.floor(city.main.temp_min - 273.15)}</div>
-                  <div>temp max: {Math.floor(city.main.temp_max - 273.15)}</div>
+                  <div>
+                    temp: {Math.floor(city.main.temp - 273.15)}
+                    <span className="deg">&#176;</span>
+                  </div>
+                  <div>
+                    temp min: {Math.floor(city.main.temp_min - 273.15)}
+                    <span className="deg">&#176;</span>
+                  </div>
+                  <div>
+                    temp max: {Math.floor(city.main.temp_max - 273.15)}
+                    <span className="deg">&#176;</span>
+                  </div>
                   <div>
                     feels like: {Math.floor(city.main.feels_like - 273.15)}
+                    <span className="deg">&#176;</span>
                   </div>
                   <div>humidity: {city.main.humidity}%</div>
                 </div>
